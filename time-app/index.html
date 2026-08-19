@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101827">
+    <title>Time app</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">A simple moment keeper</p>
+        <h1>Time app</h1>
+        <p class="intro">Keep an eye on now, track an effort, or set a gentle reminder.</p>
+      </header>
+
+      <nav class="tabs" aria-label="Time tools">
+        <button class="tab is-active" type="button" data-tab="clock" aria-selected="true">Live clock</button>
+        <button class="tab" type="button" data-tab="stopwatch" aria-selected="false">Stopwatch</button>
+        <button class="tab" type="button" data-tab="countdown" aria-selected="false">Countdown</button>
+      </nav>
+
+      <section class="panel is-active" data-panel="clock">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Right now</p>
+            <h2>Live clock</h2>
+          </div>
+          <span class="status-dot" aria-hidden="true"></span>
+        </div>
+        <div class="clock-readout" aria-live="polite">
+          <time id="clock-time">--:--:--</time>
+          <p id="clock-date">Loading date…</p>
+        </div>
+        <div class="control-row clock-controls">
+          <fieldset>
+            <legend>Hour format</legend>
+            <label><input type="radio" name="hour-format" value="24" checked> 24-hour</label>
+            <label><input type="radio" name="hour-format" value="12"> 12-hour</label>
+          </fieldset>
+          <label class="switch-label">
+            <input id="show-seconds" type="checkbox" checked>
+            <span>Show seconds</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="stopwatch" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Measure an effort</p>
+            <h2>Stopwatch</h2>
+          </div>
+          <span id="stopwatch-status" class="badge">Ready</span>
+        </div>
+        <div class="stopwatch-readout" aria-live="polite">
+          <output id="stopwatch-time">00:00.000</output>
+        </div>
+        <div class="button-row">
+          <button id="stopwatch-start" class="button button-primary" type="button">Start</button>
+          <button id="stopwatch-lap" class="button" type="button" disabled>Lap</button>
+          <button id="stopwatch-reset" class="button button-quiet" type="button">Reset</button>
+        </div>
+        <div class="laps-wrap">
+          <div class="list-heading">
+            <h3>Laps</h3>
+            <span id="lap-count">0 laps</span>
+          </div>
+          <ol id="lap-list" class="lap-list">
+            <li class="empty-state">Your laps will appear here.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="countdown" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Set a little focus</p>
+            <h2>Countdown timer</h2>
+          </div>
+          <span id="countdown-status" class="badge">Ready</span>
+        </div>
+        <div id="countdown-card" class="countdown-card">
+          <output id="countdown-time" aria-live="polite">00:00:00</output>
+          <p id="countdown-message">Choose a duration to begin.</p>
+        </div>
+        <div class="duration-fields" aria-label="Countdown duration">
+          <label>Hours <input id="countdown-hours" type="number" min="0" step="1" value="0" inputmode="numeric"></label>
+          <label>Minutes <input id="countdown-minutes" type="number" min="0" step="1" value="5" inputmode="numeric"></label>
+          <label>Seconds <input id="countdown-seconds" type="number" min="0" step="1" value="0" inputmode="numeric"></label>
+        </div>
+        <p id="countdown-error" class="form-error" role="alert" aria-live="polite"></p>
+        <div class="button-row">
+          <button id="countdown-start" class="button button-primary" type="button">Start</button>
+          <button id="countdown-reset" class="button button-quiet" type="button">Reset</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

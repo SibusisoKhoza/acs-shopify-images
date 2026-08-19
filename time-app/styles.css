@@ -1,0 +1,386 @@
+:root {
+  color-scheme: dark;
+  --background: #0c1220;
+  --surface: rgba(24, 35, 54, 0.88);
+  --surface-raised: #202e46;
+  --border: rgba(174, 193, 222, 0.16);
+  --text: #f2f6ff;
+  --muted: #a5b3ca;
+  --accent: #7dd3fc;
+  --accent-strong: #38bdf8;
+  --success: #86efac;
+  --danger: #fda4af;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(56, 189, 248, 0.14), transparent 34rem),
+    radial-gradient(circle at 90% 90%, rgba(129, 140, 248, 0.13), transparent 32rem),
+    var(--background);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
+  padding: 4.5rem 0 5rem;
+}
+
+.app-header {
+  margin-bottom: 2.25rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 12ch;
+  margin-bottom: 0.75rem;
+  font-size: clamp(3.25rem, 10vw, 5.5rem);
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+}
+
+.intro {
+  max-width: 38rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(21, 30, 47, 0.7);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.78rem 0.7rem;
+  border: 0;
+  border-radius: 0.7rem;
+  color: var(--muted);
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  color: var(--text);
+  background: rgba(125, 211, 252, 0.08);
+}
+
+.tab.is-active {
+  color: #082032;
+  background: var(--accent);
+}
+
+.panel {
+  min-height: 28rem;
+  padding: clamp(1.35rem, 5vw, 2.5rem);
+  border: 1px solid var(--border);
+  border-radius: 1.35rem;
+  background: var(--surface);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(18px);
+}
+
+.panel-heading,
+.list-heading,
+.control-row,
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.panel-heading {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.55rem, 4vw, 2.1rem);
+  letter-spacing: -0.04em;
+}
+
+h3 {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.status-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 1.2rem var(--success);
+}
+
+.clock-readout,
+.stopwatch-readout {
+  padding: 2.5rem 1rem 2.75rem;
+  text-align: center;
+}
+
+.clock-readout time,
+.stopwatch-readout output,
+.countdown-card output {
+  display: block;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.07em;
+  line-height: 1;
+}
+
+.clock-readout time {
+  font-size: clamp(3.3rem, 13vw, 7rem);
+}
+
+.clock-readout p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.stopwatch-readout output {
+  font-size: clamp(3rem, 12vw, 6.5rem);
+}
+
+fieldset {
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-bottom: 0.65rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+label {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--accent-strong);
+}
+
+.switch-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.35rem;
+}
+
+.button-row {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  min-width: 7.3rem;
+  padding: 0.82rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--text);
+  background: var(--surface-raised);
+  font-weight: 750;
+}
+
+.button:hover:not(:disabled),
+.button:focus-visible:not(:disabled) {
+  border-color: rgba(125, 211, 252, 0.55);
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  color: #062235;
+  border-color: transparent;
+  background: var(--accent);
+}
+
+.button-quiet {
+  color: var(--muted);
+  background: transparent;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.badge {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(165, 179, 202, 0.1);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.laps-wrap {
+  margin-top: 2.5rem;
+}
+
+.list-heading {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.list-heading span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.lap-list {
+  max-height: 12rem;
+  margin: 0;
+  padding: 0 0.25rem 0 2rem;
+  overflow: auto;
+}
+
+.lap-list li {
+  padding: 0.72rem 0.35rem;
+  border-bottom: 1px solid rgba(174, 193, 222, 0.09);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.lap-list li::marker {
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.empty-state {
+  padding: 1rem 0.35rem !important;
+  color: var(--muted);
+  font-size: 0.85rem;
+  list-style: none;
+}
+
+.countdown-card {
+  padding: 2.8rem 1rem 2.4rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  text-align: center;
+  background: rgba(8, 16, 29, 0.35);
+}
+
+.countdown-card output {
+  font-size: clamp(3.2rem, 13vw, 6.75rem);
+}
+
+.countdown-card p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+.countdown-card.is-done {
+  border-color: rgba(134, 239, 172, 0.45);
+  background: rgba(34, 91, 59, 0.25);
+}
+
+.countdown-card.is-done output {
+  color: var(--success);
+}
+
+.duration-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.5rem 0 0.65rem;
+}
+
+.duration-fields label {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.duration-fields input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  color: var(--text);
+  background: rgba(8, 16, 29, 0.45);
+}
+
+.duration-fields input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.form-error {
+  min-height: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    padding-top: 2.5rem;
+  }
+
+  .tabs {
+    overflow-x: auto;
+  }
+
+  .tab {
+    min-width: 7.5rem;
+  }
+
+  .control-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .clock-controls .switch-label {
+    margin-top: 0;
+  }
+}
